@@ -9,15 +9,15 @@
       "psDeals": 0
     },
     "sonny": {
-      "psAppointments": 0,
-      "psDeals": 0
-    },
-    "doug": {
       "psAppointments": 1,
       "psDeals": 0
     },
+    "doug": {
+      "psAppointments": 8,
+      "psDeals": 0
+    },
     "sumit": {
-      "psAppointments": 0,
+      "psAppointments": 3,
       "psDeals": 0
     },
     "brady": {
@@ -33,5 +33,5 @@
       "psDeals": 0
     }
   },
-  "lastUpdated": "2026-05-04T20:47:59.597Z"
+  "lastUpdated": "2026-05-04T20:55:00.000Z"
 }
