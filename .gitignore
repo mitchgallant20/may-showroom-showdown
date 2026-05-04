@@ -1,0 +1,22 @@
+node_modules
+.next
+.next-stale-*
+out
+build
+dist
+coverage
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+.vercel
+next-env.d.ts.swp
+
+# Project-root design / scratch PNGs (not used by the app — assets live in /public)
+/*.png
+
+# Claude Code local settings + TS build cache
+.claude/
+tsconfig.tsbuildinfo
+

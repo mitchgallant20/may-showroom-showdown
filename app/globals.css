@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap");
+
+:root {
+  --bg-base: #05070d;
+  --bg-card: #0a0e1a;
+  --bg-card-2: #0f1524;
+  --bg-card-3: #161d31;
+  --line: rgba(255, 255, 255, 0.06);
+  --line-strong: rgba(255, 255, 255, 0.10);
+  --ink: #e6edf6;
+  --muted: rgba(230, 237, 246, 0.55);
+  --muted-2: rgba(230, 237, 246, 0.35);
+  --bill: #1d6cd1;
+  --bill-2: #5ea3ff;
+  --bill-deep: #0a3a7a;
+  --sumit: #00b8d4;
+  --sumit-2: #7be8ff;
+  --sumit-deep: #066b7d;
+  --gold: #ffd24a;
+  --ember: #ff3d57;
+  --grid: rgba(0, 184, 212, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 184, 212, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(29, 108, 209, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(255, 61, 87, 0.06), transparent 60%),
+    linear-gradient(to bottom, #05070d 0%, #03050a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: "Barlow Condensed", "Bebas Neue", Impact, sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.numeric {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Scoreboard grid backdrop */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.bg-faceoff {
+  background:
+    radial-gradient(ellipse 60% 80% at 0% 50%, rgba(29, 108, 209, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 100% 50%, rgba(0, 184, 212, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  background-color: #07090f;
+}
+
+.bg-chart {
+  background-color: #07090f;
+}
+
+.bg-chart-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 28px;
+}
+
+.bg-faceoff-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.25;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(0, 184, 212, 0.7);
+  outline-offset: 2px;
+}
