@@ -6,13 +6,13 @@ import type {
 } from "@/lib/types";
 import { readOverrides } from "@/lib/data/manualOverrides";
 import {
-  APRIL_CO_DEALS,
+  DESK_LOG_DEALS,
   buildChartSeries,
   buildDeskLogTicker,
   countNewBoost,
   readAllDealsSnapshot,
   readPeriodSnapshot,
-} from "@/lib/data/deskLogApril";
+} from "@/lib/data/deskLog";
 
 /**
  * Composes the ContestState shown on the Pit Wall.
@@ -27,7 +27,8 @@ import {
  * Forecast pace = (in-period NEW / selling days elapsed in the period),
  * skipping Sundays. Last-month deals do not influence the rate.
  *
- * Source for now: APRIL 2026 desk-log snapshot. Replace with a live xlsx
+ * Source for now: MAY 26 desk-log snapshot. C / CO statuses excluded;
+ * rows with ETA > 2026-06-01 also excluded. Replace with a live xlsx
  * pull when ready.
  */
 
@@ -298,7 +299,7 @@ export async function getContestState(): Promise<ContestState> {
     teamBillMembers.reduce((a, m) => a + m.newDeals, 0) +
     teamSumitMembers.reduce((a, m) => a + m.newDeals, 0);
 
-  const dataSource = `Desk Log · APRIL 2026 tab · CO deals only (${APRIL_CO_DEALS.length} rows) · ${month.monthLabel} contest · all rows count toward standings · pre-${month.monthStart} NEW deals (${newBoost}) carry as chart boost only · PS appointments + PS deals updated manually via /admin`;
+  const dataSource = `Desk Log · MAY 26 sheet · ${DESK_LOG_DEALS.length} live deals (D + P, excluding C / CO) · ETA ≤ Jun 1 · ${month.monthLabel} contest · pre-${month.monthStart} NEW deals (${newBoost}) carry as chart boost only · PS appointments + PS deals updated manually via /admin`;
 
   return {
     monthLabel: month.monthLabel,

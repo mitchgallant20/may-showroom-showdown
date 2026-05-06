@@ -9,14 +9,25 @@ export const dynamic = "force-dynamic";
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ saved?: string; error?: string }>;
+  searchParams: Promise<{
+    saved?: string;
+    via?: string;
+    error?: string;
+    detail?: string;
+  }>;
 }) {
   const overrides = await readOverrides();
   const roster = getRepRoster();
   const params = await searchParams;
   const justSaved = params?.saved === "1";
-  const authFailed = params?.error === "auth";
+  const savedVia = params?.via === "github" ? "github" : params?.via === "fs" ? "fs" : null;
+  const errorKind = params?.error ?? null;
+  const errorDetail = params?.detail ?? null;
+  const authFailed = errorKind === "auth";
+  const fsFailed = errorKind === "fs";
+  const githubFailed = errorKind === "github";
   const passwordRequired = Boolean(process.env.ADMIN_PASSWORD);
+  const tokenConfigured = Boolean(process.env.GITHUB_TOKEN);
 
   const teamCloser = roster.filter((r) => r.team === "team-bill");
   const teamStorm = roster.filter((r) => r.team === "team-sumit");
@@ -57,7 +68,10 @@ export default async function AdminPage({
           className="rounded-xl border border-gold/30 px-5 py-3 font-mono text-sm font-semibold text-gold"
           style={{ background: "rgba(255,210,74,0.10)" }}
         >
-          ✓ Saved. Pit Wall refreshed.
+          ✓ Saved
+          {savedVia === "github" && " — committed to GitHub. Pit Wall will refresh after Vercel rebuilds (~30–60s)."}
+          {savedVia === "fs" && " — written to local data/overrides.json. Pit Wall refreshed."}
+          {!savedVia && ". Pit Wall refreshed."}
         </div>
       )}
 
@@ -69,6 +83,46 @@ export default async function AdminPage({
           ✗ Wrong password. Try again.
         </div>
       )}
+
+      {(fsFailed || githubFailed) && (
+        <div
+          className="space-y-2 rounded-xl border border-red-400/40 px-5 py-3 font-mono text-sm font-semibold text-red-300"
+          style={{ background: "rgba(239,68,68,0.10)" }}
+        >
+          <div>
+            ✗ Save failed via{" "}
+            <code className="text-red-200">
+              {githubFailed ? "GitHub commit" : "local filesystem"}
+            </code>
+            .
+          </div>
+          {errorDetail && (
+            <div className="break-all rounded-md border border-red-400/20 bg-black/20 px-3 py-2 text-[11px] font-normal leading-snug text-red-200">
+              {errorDetail}
+            </div>
+          )}
+          <div className="text-[11px] font-normal text-red-200/80">
+            {githubFailed
+              ? "Check that GITHUB_TOKEN in Vercel env vars is current and has Contents:write on this repo."
+              : "Local writes don't work on Vercel — set GITHUB_TOKEN to enable broadcast."}
+          </div>
+        </div>
+      )}
+
+      <div className="rounded-xl border border-line bg-ink-900/50 px-4 py-2.5 font-mono text-[11px] text-white/55">
+        Persistence channel:{" "}
+        {tokenConfigured ? (
+          <span className="text-sumit-light">GitHub commit → redeploy</span>
+        ) : (
+          <span className="text-gold">local filesystem (dev mode)</span>
+        )}{" "}
+        · admin password{" "}
+        {passwordRequired ? (
+          <span className="text-sumit-light">required</span>
+        ) : (
+          <span className="text-white/45">disabled</span>
+        )}
+      </div>
 
       <form action={saveOverrides} className="space-y-5">
         {passwordRequired && (

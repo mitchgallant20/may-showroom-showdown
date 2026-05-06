@@ -53,7 +53,7 @@ function DataModePill({ mode }: { mode: "desk-log" | "live" | "demo" }) {
           color: "text-gold",
           dotClass: "bg-gold",
           dotShadow: "0 0 10px rgba(255,210,74,0.7)",
-          label: "DESK LOG · APRIL 2026 · CO ONLY",
+          label: "DESK LOG · MAY 26 · LIVE DEALS · ETA ≤ JUN 1",
         };
       default:
         return {
