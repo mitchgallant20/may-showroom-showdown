@@ -39,8 +39,8 @@ export interface DeskLogDeal {
 
 /**
  * Live deals (status = P) from the MAY 26 sheet, filtered to ETA ≤
- * 2026-06-01 and excluding C / CO. 33 rows after filters (one June ETA
- * — DOUG / MALOLOS — excluded from the 34 status rows on the sheet).
+ * 2026-06-01 and excluding C / CO. 34 rows after filters (one June ETA
+ * — DOUG / MALOLOS — excluded from the 35 status rows on the sheet).
  */
 export const DESK_LOG_DEALS: DeskLogDeal[] = [
   { date: "2026-03-19", status: "P", source: "UP",  rdr: "LM", eta: "2026-05-02", vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "MCMILLAN",   vehicle: "PALISADE" },
@@ -77,6 +77,7 @@ export const DESK_LOG_DEALS: DeskLogDeal[] = [
   { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "KATUSIME",   vehicle: "TUCSON" },
   { date: "2026-05-05", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "GALLAGE",    vehicle: "ELANTRA" },
   { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "ERIC",   customer: "HYTLIN",     vehicle: "TUCSON" },
+  { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "PANG",       vehicle: "ELANTRA" },
 ];
 
 /** Desk-log first-name → contest rep id. Robert is "bob" in the contest. */
