@@ -1,11 +1,11 @@
 {
   "perRep": {
     "bill": {
-      "psAppointments": 8,
+      "psAppointments": 9,
       "psDeals": 0
     },
     "eric": {
-      "psAppointments": 2,
+      "psAppointments": 6,
       "psDeals": 0
     },
     "sonny": {
@@ -13,19 +13,19 @@
       "psDeals": 0
     },
     "doug": {
-      "psAppointments": 8,
+      "psAppointments": 9,
       "psDeals": 0
     },
     "sumit": {
-      "psAppointments": 3,
+      "psAppointments": 7,
       "psDeals": 0
     },
     "brady": {
-      "psAppointments": 0,
+      "psAppointments": 1,
       "psDeals": 0
     },
     "vlad": {
-      "psAppointments": 2,
+      "psAppointments": 4,
       "psDeals": 0
     },
     "bob": {
@@ -33,5 +33,5 @@
       "psDeals": 0
     }
   },
-  "lastUpdated": "2026-05-04T20:55:00.000Z"
+  "lastUpdated": "2026-05-06T00:15:41.554Z"
 }
