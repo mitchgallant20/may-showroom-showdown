@@ -39,8 +39,10 @@ export interface DeskLogDeal {
 
 /**
  * Live deals (status = P) from the MAY 26 sheet, filtered to ETA ≤
- * 2026-06-01 and excluding C / CO. 34 rows after filters (one June ETA
- * — DOUG / MALOLOS — excluded from the 35 status rows on the sheet).
+ * 2026-06-01 and excluding C / CO. 32 rows after filters from the 36
+ * status rows on the sheet (one June ETA — DOUG / MALOLOS — excluded;
+ * three rows newly cancelled — SONNY / HEMMINGER, BRADY / BAXTER,
+ * VLAD / SHTYKA).
  */
 export const DESK_LOG_DEALS: DeskLogDeal[] = [
   { date: "2026-03-19", status: "P", source: "UP",  rdr: "LM", eta: "2026-05-02", vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "MCMILLAN",   vehicle: "PALISADE" },
@@ -51,8 +53,8 @@ export const DESK_LOG_DEALS: DeskLogDeal[] = [
   // row 7 (DOUG / MALOLOS / SANTA FE HEV) excluded — ETA 2026-06-04
   { date: "2026-04-17", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "DOUG",   split: "SUMIT",  customer: "BEARDY",     vehicle: "PALISADE" },
   { date: "2026-04-20", status: "P", source: "RF",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "FETTERLY",   vehicle: "KONA" },
-  { date: "2026-04-20", status: "P", source: "UP",  rdr: "",   eta: "2026-05-10", vehicleType: "NEW",  salesperson: "SONNY",  split: "",       customer: "HEMMINGER",  vehicle: "IONIQ 5" },
-  { date: "2026-04-22", status: "P", source: "RP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "BAXTER",     vehicle: "KONA EV" },
+  // row 10 (SONNY / HEMMINGER / IONIQ 5) excluded — now status C
+  // row 11 (BRADY / BAXTER / KONA EV) excluded — now status C
   { date: "2026-04-23", status: "P", source: "UP",  rdr: "",   eta: "2026-05-17", vehicleType: "NEW",  salesperson: "VLAD",   split: "",       customer: "LOEPPKY",    vehicle: "TUCSON PHEV" },
   { date: "2026-04-25", status: "P", source: "RR",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "BROWN",      vehicle: "F150" },
   { date: "2026-04-25", status: "P", source: "RP",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "",       customer: "KUROCHKIN",  vehicle: "ELANTRA HEV" },
@@ -66,7 +68,7 @@ export const DESK_LOG_DEALS: DeskLogDeal[] = [
   { date: "2026-05-02", status: "P", source: "RP",  rdr: "",   eta: "2026-05-18", vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "HORODECKI",  vehicle: "KONA" },
   { date: "2026-05-02", status: "P", source: "RP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BILL",   split: "",       customer: "PFEIL",      vehicle: "TUCSON" },
   { date: "2026-05-02", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "SUMIT",  customer: "SVEINSON",   vehicle: "TUCSON" },
-  { date: "2026-05-02", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "VLAD",   split: "",       customer: "SHTYKA",     vehicle: "X5" },
+  // row 25 (VLAD / SHTYKA / X5) excluded — now status C
   { date: "2026-05-02", status: "P", source: "RF",  rdr: "P",  eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "BRADY",  customer: "SALAZAR",    vehicle: "VENUE" },
   { date: "2026-05-02", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "WARREN",     vehicle: "KONA" },
   { date: "2026-05-04", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "KAY",        vehicle: "KONA" },
@@ -78,6 +80,7 @@ export const DESK_LOG_DEALS: DeskLogDeal[] = [
   { date: "2026-05-05", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "GALLAGE",    vehicle: "ELANTRA" },
   { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "ERIC",   customer: "HYTLIN",     vehicle: "TUCSON" },
   { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "PANG",       vehicle: "ELANTRA" },
+  { date: "2026-05-06", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "DOUG",   split: "",       customer: "HARMS",      vehicle: "KONA" },
 ];
 
 /** Desk-log first-name → contest rep id. Robert is "bob" in the contest. */
