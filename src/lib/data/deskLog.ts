@@ -38,49 +38,77 @@ export interface DeskLogDeal {
 }
 
 /**
- * Live deals (status = P) from the MAY 26 sheet, filtered to ETA ≤
- * 2026-06-01 and excluding C / CO. 32 rows after filters from the 36
- * status rows on the sheet (one June ETA — DOUG / MALOLOS — excluded;
- * three rows newly cancelled — SONNY / HEMMINGER, BRADY / BAXTER,
- * VLAD / SHTYKA).
+ * Live deals (status = D or P) from the MAY 26 sheet, snapshot
+ * 2026-05-11. 60 rows kept from 66 status rows on the sheet:
+ *  - 4 excluded as C/CO (HEMMINGER, BAXTER, SHTYKA, KINCH)
+ *  - 1 excluded for ETA > 2026-06-01 (DOUG / MALOLOS)
+ *  - 1 excluded as off-roster (VINCE / LLORIN)
+ *
+ * Seven rows have moved P → D since the last snapshot:
+ *  ERIC/MCMILLAN, SUMIT/MERCER, SONNY/LEBLANC, ROBERT/BRASS,
+ *  ERIC/KAUR, ROBERT/VELDHUISEN, SUMIT/HOFFMEISTER.
  */
 export const DESK_LOG_DEALS: DeskLogDeal[] = [
-  { date: "2026-03-19", status: "P", source: "UP",  rdr: "LM", eta: "2026-05-02", vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "MCMILLAN",   vehicle: "PALISADE" },
-  { date: "2026-04-04", status: "P", source: "UP",  rdr: "LM", eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "",       customer: "MERCER",     vehicle: "KONA" },
-  { date: "2026-04-11", status: "P", source: "RP",  rdr: "",   eta: "2026-05-05", vehicleType: "NEW",  salesperson: "BILL",   split: "VLAD",   customer: "KOLT",       vehicle: "TUCSON PHEV" },
-  { date: "2026-04-11", status: "P", source: "REV", rdr: "LM", eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "",       customer: "SATOUDIAN",  vehicle: "PALISADE HEV" },
-  { date: "2026-04-13", status: "P", source: "UP",  rdr: "LM", eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "ROBERT", customer: "BEDI",       vehicle: "PALISADE" },
-  // row 7 (DOUG / MALOLOS / SANTA FE HEV) excluded — ETA 2026-06-04
-  { date: "2026-04-17", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "DOUG",   split: "SUMIT",  customer: "BEARDY",     vehicle: "PALISADE" },
-  { date: "2026-04-20", status: "P", source: "RF",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "FETTERLY",   vehicle: "KONA" },
-  // row 10 (SONNY / HEMMINGER / IONIQ 5) excluded — now status C
-  // row 11 (BRADY / BAXTER / KONA EV) excluded — now status C
-  { date: "2026-04-23", status: "P", source: "UP",  rdr: "",   eta: "2026-05-17", vehicleType: "NEW",  salesperson: "VLAD",   split: "",       customer: "LOEPPKY",    vehicle: "TUCSON PHEV" },
-  { date: "2026-04-25", status: "P", source: "RR",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "BROWN",      vehicle: "F150" },
-  { date: "2026-04-25", status: "P", source: "RP",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "",       customer: "KUROCHKIN",  vehicle: "ELANTRA HEV" },
-  { date: "2026-04-25", status: "P", source: "PH",  rdr: "",   eta: "2026-05-18", vehicleType: "NEW",  salesperson: "BRADY",  split: "SUMIT",  customer: "BOLT",       vehicle: "SANTA FE HEV" },
-  { date: "2026-04-27", status: "P", source: "RP",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "SONNY",  split: "BRADY",  customer: "NADEAU",     vehicle: "TUCSON" },
-  { date: "2026-04-27", status: "P", source: "RP",  rdr: "R",  eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "RACE",       vehicle: "TUCSON" },
-  { date: "2026-04-30", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "RAUSCH",     vehicle: "TUCSON HEV" },
-  { date: "2026-05-01", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "AKINYEMI",   vehicle: "SANTA FE" },
-  { date: "2026-05-02", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "LEBLANC",    vehicle: "ELANTRA" },
-  { date: "2026-05-02", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "",       customer: "WHITE",      vehicle: "TUCSON" },
-  { date: "2026-05-02", status: "P", source: "RP",  rdr: "",   eta: "2026-05-18", vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "HORODECKI",  vehicle: "KONA" },
-  { date: "2026-05-02", status: "P", source: "RP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BILL",   split: "",       customer: "PFEIL",      vehicle: "TUCSON" },
-  { date: "2026-05-02", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "SUMIT",  customer: "SVEINSON",   vehicle: "TUCSON" },
-  // row 25 (VLAD / SHTYKA / X5) excluded — now status C
-  { date: "2026-05-02", status: "P", source: "RF",  rdr: "P",  eta: "",           vehicleType: "NEW",  salesperson: "SUMIT",  split: "BRADY",  customer: "SALAZAR",    vehicle: "VENUE" },
-  { date: "2026-05-02", status: "P", source: "RF",  rdr: "",   eta: "",           vehicleType: "USED", salesperson: "SONNY",  split: "",       customer: "WARREN",     vehicle: "KONA" },
-  { date: "2026-05-04", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "KAY",        vehicle: "KONA" },
-  { date: "2026-05-04", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "SINGH",      vehicle: "SONATA HEV" },
-  { date: "2026-05-04", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "BRASS",      vehicle: "PALISADE HEV" },
-  { date: "2026-05-04", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ERIC",   split: "",       customer: "KAUR",       vehicle: "ELANTRA HEV" },
-  { date: "2026-05-05", status: "P", source: "RR",  rdr: "P",  eta: "",           vehicleType: "NEW",  salesperson: "VLAD",   split: "",       customer: "RAND",       vehicle: "TUCSON HEV" },
-  { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "ROBERT", split: "",       customer: "KATUSIME",   vehicle: "TUCSON" },
-  { date: "2026-05-05", status: "P", source: "PH",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "GALLAGE",    vehicle: "ELANTRA" },
-  { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "ERIC",   customer: "HYTLIN",     vehicle: "TUCSON" },
-  { date: "2026-05-05", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "BRADY",  split: "",       customer: "PANG",       vehicle: "ELANTRA" },
-  { date: "2026-05-06", status: "P", source: "UP",  rdr: "",   eta: "",           vehicleType: "NEW",  salesperson: "DOUG",   split: "",       customer: "HARMS",      vehicle: "KONA" },
+  { date: "2026-03-19", status: "D", source: "UP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "", customer: "MCMILLAN", vehicle: "PALISADE" },
+  { date: "2026-04-04", status: "D", source: "UP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "MERCER", vehicle: "KONA" },
+  { date: "2026-04-11", status: "P", source: "RP", rdr: "", eta: "2026-05-21", vehicleType: "NEW", salesperson: "BILL", split: "VLAD", customer: "KOLT", vehicle: "TUCSON PHEV" },
+  { date: "2026-04-11", status: "P", source: "REV", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "SATOUDIAN", vehicle: "PALISADE HEV" },
+  { date: "2026-04-13", status: "P", source: "UP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "ROBERT", customer: "BEDI", vehicle: "PALISADE" },
+  { date: "2026-04-17", status: "P", source: "PH", rdr: "", eta: "", vehicleType: "NEW", salesperson: "DOUG", split: "SUMIT", customer: "BEARDY", vehicle: "PALISADE" },
+  { date: "2026-04-20", status: "P", source: "RF", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "FETTERLY", vehicle: "KONA" },
+  { date: "2026-04-23", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "", customer: "LOEPPKY", vehicle: "TUCSON PHEV" },
+  { date: "2026-04-25", status: "P", source: "RR", rdr: "", eta: "", vehicleType: "USED", salesperson: "SONNY", split: "", customer: "BROWN", vehicle: "F150" },
+  { date: "2026-04-25", status: "P", source: "RP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "KUROCHKIN", vehicle: "ELANTRA HEV" },
+  { date: "2026-04-25", status: "P", source: "PH", rdr: "", eta: "2026-05-18", vehicleType: "NEW", salesperson: "BRADY", split: "SUMIT", customer: "BOLT", vehicle: "SANTA FE HEV" },
+  { date: "2026-04-27", status: "P", source: "RP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "SONNY", split: "BRADY", customer: "NADEAU", vehicle: "TUCSON" },
+  { date: "2026-04-27", status: "P", source: "RP", rdr: "LM", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "RACE", vehicle: "TUCSON" },
+  { date: "2026-04-30", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "RAUSCH", vehicle: "TUCSON HEV" },
+  { date: "2026-05-01", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "USED", salesperson: "SONNY", split: "", customer: "AKINYEMI", vehicle: "SANTA FE" },
+  { date: "2026-05-02", status: "D", source: "RF", rdr: "", eta: "", vehicleType: "USED", salesperson: "SONNY", split: "", customer: "LEBLANC", vehicle: "ELANTRA" },
+  { date: "2026-05-02", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "WHITE", vehicle: "TUCSON" },
+  { date: "2026-05-02", status: "P", source: "RP", rdr: "", eta: "2026-05-18", vehicleType: "NEW", salesperson: "BRADY", split: "", customer: "HORODECKI", vehicle: "KONA" },
+  { date: "2026-05-02", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BILL", split: "", customer: "PFEIL", vehicle: "TUCSON" },
+  { date: "2026-05-02", status: "P", source: "PH", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "SUMIT", customer: "SVEINSON", vehicle: "TUCSON" },
+  { date: "2026-05-02", status: "P", source: "RF", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "BRADY", customer: "SALAZAR", vehicle: "VENUE" },
+  { date: "2026-05-02", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "USED", salesperson: "SONNY", split: "", customer: "WARREN", vehicle: "KONA" },
+  { date: "2026-05-04", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "", customer: "KAY", vehicle: "KONA" },
+  { date: "2026-05-04", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "SINGH", vehicle: "SONATA HEV" },
+  { date: "2026-05-04", status: "D", source: "UP", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "BRASS", vehicle: "PALISADE HEV" },
+  { date: "2026-05-04", status: "D", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "", customer: "KAUR", vehicle: "ELANTRA HEV" },
+  { date: "2026-05-05", status: "P", source: "RR", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "", customer: "RAND", vehicle: "TUCSON HEV" },
+  { date: "2026-05-05", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "KATUSIME", vehicle: "TUCSON" },
+  { date: "2026-05-05", status: "P", source: "PH", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "", customer: "GALLAGE", vehicle: "ELANTRA" },
+  { date: "2026-05-05", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "ERIC", customer: "HUTLIN", vehicle: "TUCSON" },
+  { date: "2026-05-05", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "", customer: "PANG", vehicle: "ELANTRA" },
+  { date: "2026-05-06", status: "P", source: "UP", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "DOUG", split: "", customer: "HARMS", vehicle: "KONA" },
+  { date: "2026-05-07", status: "D", source: "PH", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "ROBERT", split: "BRADY", customer: "VELDHUISEN", vehicle: "SANTA FE HEV" },
+  { date: "2026-05-07", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "USED", salesperson: "VLAD", split: "", customer: "HUTTON", vehicle: "KONA" },
+  { date: "2026-05-08", status: "D", source: "PH", rdr: "", eta: "", vehicleType: "USED", salesperson: "SUMIT", split: "", customer: "HOFFMEISTER", vehicle: "SONATA" },
+  { date: "2026-05-08", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "", customer: "MELNYK", vehicle: "TUCSON" },
+  { date: "2026-05-08", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BILL", split: "", customer: "ALLEN", vehicle: "VENUE" },
+  { date: "2026-05-08", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "USED", salesperson: "ERIC", split: "", customer: "MUIR", vehicle: "SANTA FE" },
+  { date: "2026-05-08", status: "P", source: "RP", rdr: "", eta: "2026-05-26", vehicleType: "NEW", salesperson: "ROBERT", split: "", customer: "DOW", vehicle: "TUCSON PHEV" },
+  { date: "2026-05-08", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BILL", split: "SONNY", customer: "SINGH", vehicle: "ELANTRA" },
+  { date: "2026-05-08", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "USED", salesperson: "VLAD", split: "", customer: "SOROKA", vehicle: "X5" },
+  { date: "2026-05-08", status: "P", source: "RR", rdr: "", eta: "", vehicleType: "USED", salesperson: "SONNY", split: "", customer: "RONDEAU", vehicle: "SANTA CRUZ" },
+  { date: "2026-05-08", status: "P", source: "PH", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "BHANDAL", vehicle: "KONA" },
+  { date: "2026-05-08", status: "P", source: "RR", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "SUMIT", customer: "CHATURVEDI", vehicle: "VENUE" },
+  { date: "2026-05-08", status: "P", source: "PH", rdr: "", eta: "", vehicleType: "USED", salesperson: "ERIC", split: "", customer: "NGEREM", vehicle: "KONA" },
+  { date: "2026-05-09", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "BILL", customer: "LALONDE", vehicle: "SANTA FE HEV" },
+  { date: "2026-05-09", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "BRADY", customer: "VICTOR", vehicle: "KONA" },
+  { date: "2026-05-09", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "DOUG", split: "", customer: "GARGE", vehicle: "ELANTRA" },
+  { date: "2026-05-09", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "BRADY", split: "SUMIT", customer: "AHMED", vehicle: "PALISADE HEV" },
+  { date: "2026-05-09", status: "P", source: "RR", rdr: "P", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "DOUSDEBES CORDOVA", vehicle: "VENUE" },
+  { date: "2026-05-09", status: "P", source: "RR", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "", customer: "VANCAEYZEEL", vehicle: "IONIQ 5" },
+  { date: "2026-05-09", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "HENDERSON", vehicle: "TUCSON HEV" },
+  { date: "2026-05-09", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "DOUG", split: "BRADY", customer: "ALADENIJII", vehicle: "TUCSON" },
+  { date: "2026-05-09", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "USED", salesperson: "VLAD", split: "", customer: "CARREIRO", vehicle: "TUCSON" },
+  { date: "2026-05-09", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "ERIC", split: "", customer: "PEZZOTTI", vehicle: "TUCSON HEV" },
+  { date: "2026-05-09", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "", customer: "BUCKNER", vehicle: "SANTA FE HEV" },
+  { date: "2026-05-11", status: "P", source: "UP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "VLAD", split: "", customer: "MACKEY", vehicle: "KONA" },
+  { date: "2026-05-11", status: "P", source: "RP", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SUMIT", split: "", customer: "JEFFERY", vehicle: "KONA" },
+  { date: "2026-05-11", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SONNY", split: "", customer: "DELA CRUZ", vehicle: "TUCSON HEV" },
+  { date: "2026-05-11", status: "P", source: "RF", rdr: "", eta: "", vehicleType: "NEW", salesperson: "SONNY", split: "", customer: "MARQUEZ", vehicle: "TUCSON HEV" },
 ];
 
 /** Desk-log first-name → contest rep id. Robert is "bob" in the contest. */
