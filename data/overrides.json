@@ -1,37 +1,37 @@
 {
   "perRep": {
     "bill": {
-      "psAppointments": 9,
-      "psDeals": 0
+      "psAppointments": 10,
+      "psDeals": 3
     },
     "eric": {
       "psAppointments": 6,
-      "psDeals": 0
+      "psDeals": 4
     },
     "sonny": {
-      "psAppointments": 1,
-      "psDeals": 0
+      "psAppointments": 3,
+      "psDeals": 1
     },
     "doug": {
       "psAppointments": 10,
-      "psDeals": 0
+      "psDeals": 2
     },
     "sumit": {
-      "psAppointments": 7,
-      "psDeals": 0
+      "psAppointments": 10,
+      "psDeals": 3
     },
     "brady": {
-      "psAppointments": 4,
-      "psDeals": 0
+      "psAppointments": 8,
+      "psDeals": 2
     },
     "vlad": {
-      "psAppointments": 4,
-      "psDeals": 0
+      "psAppointments": 5,
+      "psDeals": 5
     },
     "bob": {
-      "psAppointments": 0,
-      "psDeals": 0
+      "psAppointments": 1,
+      "psDeals": 1
     }
   },
-  "lastUpdated": "2026-05-06T03:00:00.000Z"
+  "lastUpdated": "2026-05-11T15:00:00.000Z"
 }
